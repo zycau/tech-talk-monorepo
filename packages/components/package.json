@@ -1,6 +1,6 @@
 {
   "name": "components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@landingpage/common": "^0.0.2",
+    "@landingpage/common": "^0.0.3",
     "axios": "^0.19.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
