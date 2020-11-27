@@ -1,0 +1,49 @@
+1. 在每个package中运行test命令，在根目录package.json中：
+> lerna run test
+
+2. 在某个package中运行test命令，在根目录package.json中：
+> lerna run test --scope=@landingPage/xxxxx
+
+3. 在若干个package中运行test命令，在根目录package.json中：
+> lerna run test --scope={@landingPage/xxxxx, @landingPage/yyyyy}
+
+4. 查找修改过的代码，在根目录package.json中：
+> lerna diff
+
+
+创建步骤：
+
+> npm install lerna -g
+
+> 创建项目文件夹，进入文件夹
+
+> lerna init，生成package.json和lerna.json，在package.json中private为true
+
+> 在packages文件夹中创建components和layout，分别npm init -y。
+
+> 运行所有package的某条命令，分别修改两个package的test命令为echo \"test layout\"，在顶层package.json的scripts中加入："test": "lerna run test"，并运行npm run test
+
+> 对某个package添加依赖的三种方法：lerna add axios --scope=components，lerna add babel-loader packages/layout -D，yarn workspace components add/remove react
+
+> 安装的依赖都在各自的node_modules中，希望放在顶层的node_modules中，所以修改顶层package.json和lerna.json：
+  // package.json
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+
+  // lerna.json
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+
+> lerna clean，删除两个package中的node_modules，然后直接yarn，可以安装所有的依赖到根目录。
+
+> 如果要安装一个依赖到所有的目录，lerna add react
+
+> (如果在layout中使用axios也是可以的，不过如果用typescript或其他type管理工具如flow，会报错。)
+
+> yarn workspace tim remove components，可以移除tim中的components依赖。
+
+> 也可以用lerna create 
+
+

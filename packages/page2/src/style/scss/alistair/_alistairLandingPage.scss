@@ -1,0 +1,579 @@
+#alistair-landing-page{
+    font-family: 'Segoe UI', sans-serif;
+
+    button{
+        outline: none;
+    }
+
+    .landing-header>nav, .hero-banner, .you-will-learn, .meet-the-host, .others-saying, .ready-to-learn, .landing-footer{
+        max-width: 1200px;
+        margin: auto;
+    }
+    
+    .landing-header{
+        nav{
+            @include flex(space-between, center);
+            padding: 0 20px;
+            height: 80px;
+            font-family: acumin-pro, sans-serif;
+
+            img{
+                width: 87px;
+            }
+            ul{
+                display: none;
+            }
+            button{
+                background: $backColor;
+                border: none;
+                padding: 0;
+                color: #fff;
+                width: 130px;
+                height: 40px;
+                font-size: 16px;
+                border-radius: 30px;
+                &:hover{
+                    background: #013B81; 
+                }
+            }
+        }
+    }
+    .hero-banner{
+        padding: 40px 16px;
+
+        >div:first-of-type{
+            margin-bottom: 20px;
+
+            h2:first-of-type{
+                font-size: 12px;
+                color: #17a5dc;
+                font-weight: 700;
+                margin-bottom: 12px;
+            }
+            h2:nth-of-type(2){
+                color: $backColor;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 0 50px 10px 0;
+                text-transform: capitalize;
+            }
+            p{
+                font-size: 14px;
+                color: #343434;
+                margin-bottom: 20px;
+            }
+            button{
+                width: 288px;
+                height: 48px;
+                border: none;
+                border-radius: 30px;
+                background: $backColor;
+                color: #fff;
+                font-size: 14px;
+                font-weight: bold;
+
+                @include buttonHover()
+            }
+        } 
+        >div:nth-of-type(2){
+            margin: 0 4px;
+            text-align: center;
+
+            .hero-banner-img{
+                width: 100%;
+                max-width: 468px;
+            }
+        }
+    }
+    .you-will-learn{
+        padding: 80px 20px;
+
+        h2{
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        img{
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        h3{
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: $textColor;
+        }
+        p{
+            font-size: 14px;
+            color: $textColor;
+            margin-bottom: 30px;
+        }
+
+    }
+    .meet-the-host{
+        padding: 40px 20px;
+        text-align: center;
+
+        .bottom-show{
+            display: none;
+        }
+        .top-show{
+            font-size: 20px;
+            font-weight: bold;
+            color: $backColor;
+            margin-bottom: 20px;
+        }
+        .host-img{
+            margin-bottom: 20px;
+
+            img{
+                width: 128px;
+            }
+        }
+        .host-text{
+            p{                
+                font-size: 14px;
+                color: $textColor;
+                margin-bottom: 20px;
+                text-align: left;
+            }            
+        }
+        button{
+            border: none;
+            width: 100%;
+            max-width: 700px;
+            height: 56px;
+            border-radius: 30px;
+            background: $backColor;
+            color: #fff;
+            font-size: 14px;
+
+            @include buttonHover()
+        }
+        .show-1440{
+            display: none;
+        }
+    }
+    .others-saying{
+        padding: 80px 20px;
+
+        h2{
+            font-size: 20px;
+            font-weight: bold;
+            color: $backColor;
+            margin-bottom: 27px;
+            text-align: left;
+        }        
+        img{
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        >div>div p:first-of-type{
+            font-size: 20px;
+            font-weight: bold;
+            color: $backColor;
+        }
+        >div>div p:nth-of-type(2){
+            font-size: 14px;
+            color: $textColor;
+            margin-bottom: 30px;
+        }
+
+    }
+    .ready-to-learn{
+        padding: 40px 10px;
+        color: #fff;
+        text-align: center;
+
+        h2{
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        p{
+            font-size: 14px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        button{
+            border: none;
+            padding: 0;
+            width: 100%;
+            max-width: 700px;
+            height: 56px;
+            border-radius: 30px;
+            background: #fff;
+            color: $backColor;
+            font-size: 14px;
+            font-weight: 500;
+            
+            @include buttonHover()
+        }
+    }
+    .landing-footer{
+        padding: 40px 20px;
+        font-family: 'Source Sans Pro', sans-serif;
+        p{
+            font-size: 14px;
+            color: $textColor;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media only screen and (min-width:768px){
+        .landing-header{
+            nav{
+                padding: 0 32px;
+                height: 100px;
+    
+                img{
+                    width: 120px;
+                }                
+                button{                    
+                    width: 200px;
+                    height: 48px;
+                }
+            }
+        }
+        .hero-banner{
+            padding: 40px 32px;
+            background: $backColor2;
+    
+            >div:first-of-type{
+                padding: 40px 0;
+                background: #fff;
+
+                >div{
+                    border-left: 6px solid #17a5dc;
+                    padding: 0 40px 0 50px;
+                }
+    
+                h2:first-child{
+                    font-size: 16px;                    
+                    margin-bottom: 20px;
+                }
+                h2:nth-of-type(2){                    
+                    font-size: 40px;
+                    line-height: 48px;
+                    margin: 0 80px 20px 0;
+                }
+                p{
+                    font-size: 16px;
+                    margin-right: 10px;
+                }
+                button{
+                    width: 320px;
+                    height: 56px;
+                    font-size: 16px;                   
+                }
+            }
+        }
+        .you-will-learn{
+            padding: 80px 34px;
+    
+            h2{
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+            >div{
+                @include flex(flex-start, flex-start);
+                flex-wrap: wrap;
+
+                >div{
+                    width: 312px;
+                    margin-right: 20px;
+                }
+            }
+            h3{
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            p{
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+    
+        }
+        .meet-the-host{
+            padding: 80px 34px;
+    
+            .bottom-show{
+                display: block;
+                font-size: 28px;
+                font-weight: bold;
+                color: $backColor;
+                text-align: left;
+            }
+            .top-show{
+                display: none;                
+            }
+            >div{
+                @include flex(center, center);
+            }
+            .host-img{
+                margin-bottom: 40px;
+                img{
+                    width: 250px;
+                    margin-right: 20px;
+                }
+            }
+            .host-text{
+                p{                
+                    font-size: 16px;
+                }            
+            }
+            button{
+                font-size: 16px;
+            }
+        }
+        .others-saying{
+            padding: 80px 34px;
+    
+            h2{
+                font-size: 28px;
+            }        
+            img{
+                width: 100px;
+                margin-bottom: 20px;
+            }
+            >div>div p:nth-of-type(2){
+                font-size: 16px;
+                margin-bottom: 40px;
+            }    
+        }
+        .ready-to-learn{
+            padding: 80px 34px;
+    
+            h2{
+                font-size: 32px;
+            }
+            p{
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+            button{
+                font-size: 14px;
+            }
+        }
+        .landing-footer{
+            padding: 80px 34px;
+    
+            p{
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media only screen and (min-width:1250px){
+        .landing-header{
+            nav{
+                padding: 0;
+                
+                div:nth-of-type(2){
+                    @include flex(flex-end, center)
+                }
+                
+                ul{
+                    @include flex(flex-end, center);
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+
+                    li{
+                        margin-right: 40px;
+                        font-weight: 600;
+                        color: $backColor;
+                        font-size: 16px;
+                    }
+                }                
+            }
+        }
+        .hero-banner{
+            padding: 140px 0;
+            @include flex(flex-start, center);
+    
+            >div:first-of-type{
+                max-width: 580px;
+                margin-right: 20px;
+
+                h2:nth-of-type(2), p{
+                    margin-right: 0;
+                }                
+            } 
+            >div:nth-of-type(2){                
+                .hero-banner-img{                 
+                    max-width: 580px;
+                }
+            }
+        }
+        .you-will-learn{
+            padding: 100px 0;
+
+            >div>div{
+                width: 375px;
+            }
+        }
+        .meet-the-host{
+            padding: 100px 0;
+    
+            .host-img{
+                margin-bottom: 0;
+                img{
+                    width: 280px;
+                    margin-right: 120px;
+                }
+            }
+            button{
+                display: none;
+            }
+            .show-1440{
+                display: block;
+                width: 320px;
+            }
+        }
+        .others-saying{
+            padding: 100px 0;
+            
+            >div{
+                @include flex(space-between, flex-start);
+
+                >div{
+                    width: 530px;
+                }
+            }               
+        }
+        .ready-to-learn{
+            padding: 80px 0;    
+            
+            button{
+                max-width: 340px;
+            }
+        }
+    }
+}
+
+.register-modal{  
+    
+    font-family: 'Segoe UI', sans-serif;
+
+    .ant-modal{
+        max-width: calc(100vw - 30px);
+    }
+    .ant-modal-close{
+        width: 28px;
+        height: 28px;
+        border: 2px solid $backColor;
+        color: $backColor;
+        border-radius: 15px;
+        top: -14px;
+        right: -14px;
+        background: #fff;
+
+        .ant-modal-close-x{
+            width: auto;
+            height: auto;
+            line-height: initial;
+        }
+    }    
+    .ant-modal-header{
+        padding: 32px 24px 0;
+        margin-bottom: 20px;
+        border: none;
+        
+        .ant-modal-title{
+            font-size: 20px;
+            font-weight: bold;
+            color: $backColor;            
+            line-height: 36px;
+        }
+
+    }
+    .ant-modal-body{
+        padding: 0 24px 40px;
+
+        >div{
+            margin-bottom: 24px;
+        }
+        label{
+            font-size: 16px;
+            color: #343434;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        input{
+            height: 40px;
+        }
+        button{
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 4px;
+            background: $backColor;
+            color: #fff;
+            font-size: 16px;
+
+            &.button3{
+                background: #1ca92f;
+            }
+            &:disabled{
+                background: #888;
+            }
+        }
+        .ant-input-affix-wrapper{
+            align-items: center;
+            padding: 0 11px;
+
+            .ant-input-suffix{
+                color: #1ca92f;
+            }
+        }
+        .ant-select{
+            width: 100%;
+
+            .ant-select-selector{
+                height: 40px;
+                align-items: center;
+
+                .ant-select-selection-search{
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+        .phone-input-area{
+            @include flex(flex-start, center);
+            
+            .ant-select{
+                width: 90px;
+                text-align: center;
+                margin-right: 20px;
+                flex-shrink: 0;
+            }            
+        }
+        >p{
+            font-size: 14px;
+            color: #4a4a4a;
+        }      
+    }
+
+    @media only screen and (min-width:590px){
+        &{
+            width: auto !important;
+            margin: auto;
+        }        
+        .ant-modal-header{
+            padding: 32px 40px 0;
+
+            .ant-modal-title{
+                font-size: 28px;
+            }
+        }
+        .ant-modal-body{
+            padding: 0 40px 40px;
+        }      
+        
+    }
+    
+}
+

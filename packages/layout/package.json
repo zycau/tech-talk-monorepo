@@ -1,0 +1,21 @@
+{
+  "name": "layout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"test layout\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^8.1.0"
+  },
+  "dependencies": {
+    "@landingpage/common": "^0.1.0",
+    "babel": "^6.23.0",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  }
+}

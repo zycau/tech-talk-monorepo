@@ -1,0 +1,426 @@
+#alistair-video-page{
+    font-family: 'Segoe UI', sans-serif;
+
+    button{
+        outline: none;
+    }
+    
+    .error-msg{
+        padding: 50px 30px;
+    }
+    
+    header nav, .flex-part, .ticks-bar, .why-trade, footer>div{
+        max-width: 1200px;
+        margin: auto;
+    }
+    
+    header{
+        nav{
+            @include flex(space-between, center);
+            padding: 0 20px;
+            height: 80px;
+            font-family: acumin-pro, sans-serif;
+
+            img{
+                width: 87px;
+            }
+            button{
+                width: 130px;
+                height: 40px;
+                font-size: 16px;
+                background: $backColor;
+                color: #fff;
+                border: none;
+                border-radius: 30px;
+            }
+        }
+    }
+    .video-part{ // Parent element with class 'flex-part'
+        .video-info{
+            padding: 40px 16px;
+
+            h1{
+                font-size: 28px;
+                font-weight: bold;
+                margin: 0 50px 12px 0;
+                color: $backColor;
+                line-height: 36px;
+            }
+            p{
+                font-size: 14px;
+                color: $textColor2;
+                margin-bottom: 0;
+            }
+        }
+        .video-player{
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+            margin: auto;
+
+            >div{
+                padding-top: 56.25%; // Percentage ratio for 16:9
+                position: relative;
+
+                >div{
+                    position: absolute;
+                    top: 0;
+                }
+            }    
+        } 
+        .play-list{
+            padding: 30px 16px 50px;
+
+            h2{
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid $backColor2;
+            }
+            img{
+                display: none;
+            }
+            h3{
+                @include flex(space-between, center);                
+                margin-bottom: 5px;
+                font-size: 16px;
+                font-weight: bold;
+                color: $textColor2;
+            }
+            .currentVideoTitle{
+                color: #17a5dc;
+            }
+            p{
+                font-size: 14px;
+                color: $textColor2;
+                margin-bottom: 28px;
+            }
+        }
+    }
+    .side-chart{
+        display: none;
+    }
+    .ticks-bar{
+        padding: 80px 10px 50px;
+        @include flex(center, flex-start);        
+        flex-wrap: wrap;
+        font-family: acumin-pro, sans-serif;
+
+        .tick-item{
+            width: 150px;
+            padding: 0 6px 30px;
+            text-align: center;
+
+            img{
+                width: 28px;
+                margin-bottom: 12px;              
+            }
+            p{
+                font-size: 14px;
+                color: #fff;
+            }
+        }
+    }
+    .why-trade{
+        padding: 70px 10px 80px;
+        text-align: center;
+
+        h1{
+            font-size: 28px;
+            padding: 0 25px;
+            margin-bottom: 12px;
+            color: $backColor;
+        }
+        >p{
+            font-size: 14px;
+            color: $textColor2;
+            margin: 0 auto 20px;
+            // margin-bottom: 20px;
+        }
+        .why-trade-items{
+            padding: 12px 0;
+            @include flex(center, flex-start);
+            flex-wrap: wrap;
+
+            .why-trade-item{
+                @include flex(center, center);
+                flex-direction: column;
+                background: #fff;
+                width: 288px;
+                height: 180px;
+                border-radius: 12px;
+                margin: 0 6px 12px;
+                transition: transform 0.5s;
+                &:hover{
+                    border: 2px solid #17a5dc;
+                    transform: scale(1.05); 
+                }
+
+                img{
+                    margin-bottom: 20px;
+                }
+                h3{
+                    font-size: 16px;
+                    margin-bottom: 12px;
+                }
+                p{
+                    font-size: 12px;
+                    color: #333;
+                }
+            }
+        }
+        .why-trade-btn1, .why-trade-btn2{
+            @include flex(center, center);            
+            height: 52px;
+            width: 100%;
+            max-width: 700px;            
+            border-radius: 30px;            
+            font-size: 16px;
+            margin: auto;
+            font-family: acumin-pro, sans-serif;
+            
+            @include buttonHover();
+        }
+        .why-trade-btn1{
+            border: 2px solid $backColor;
+            color: $backColor;
+            margin-bottom: 18px;
+        }
+        .why-trade-btn2{
+            background: $backColor;
+            color: #fff;
+            border: none;
+        }
+    }
+    footer{
+        >div{
+            padding: 40px 16px;
+
+            p{
+                font-size: 12px;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    @media only screen and (min-width:768px){
+        header{
+            nav{                
+                padding: 0 34px;
+                height: 100px;
+    
+                img{
+                    width: 120px;
+                }
+                button{
+                    width: 200px;
+                    height: 48px;
+                }
+            }
+        }
+        .video-part{ // Parent element with class 'flex-part'
+            padding: 100px 34px;
+
+            .video-info{
+                padding: 0;
+    
+                h1{
+                    font-size: 40px;
+                    margin: 0 0 17px;
+                    line-height: 48px;
+                }
+                p{
+                    font-size: 20px;
+                    color: $textColor2;
+                    margin-bottom: 60px;
+                }
+            }
+            .video-player{
+                width: 100%;
+                max-width: 700px;
+                margin: auto;
+                margin-bottom: 40px;
+            } 
+            .play-list{
+                padding: 0;   
+                
+                >div{
+                    @include flex(flex-start, flex-start);
+                    
+                    .play-list-item{
+                        margin-right: 20px;
+                        width: 218px;
+                    }
+                }
+                img{
+                    display: block;
+                    width: 218px;
+                    height: 123px;
+                    margin-bottom: 20px;
+                }                
+                p{                    
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .ticks-bar{
+            padding: 80px 24px 50px;
+    
+            .tick-item{
+                width: 240px;
+                padding: 0 10px 40px;
+    
+                img{
+                    width: 40px;
+                    margin-bottom: 20px;              
+                }
+                p{
+                    font-size: 16px;
+                }
+            }
+        }
+        .why-trade{
+            padding: 80px 24px 100px;
+    
+            h1{
+                font-size: 36px;
+                padding: 0;
+                margin-bottom: 20px;
+            }
+            >p{
+                font-size: 16px;
+                margin: 0 auto;
+                max-width: 640px;
+            }
+            .why-trade-items{
+                padding: 37px 0;
+    
+                .why-trade-item{
+                    width: 340px;
+                    margin: 0 10px 20px;    
+                }
+            }
+            .why-trade-btn1, .why-trade-btn2{                      
+                height: 60px;                
+            }
+            .why-trade-btn1{                
+                margin-bottom: 24px;
+            }            
+        }
+        footer{
+            >div{
+                padding: 80px 40px;
+    
+                p{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width:1250px){
+        .error-msg{
+            padding: 0 30px 80px;
+        }
+        
+        header{
+            nav{                
+                padding: 0;
+                margin-bottom: 80px;
+            }
+        }
+        .flex-part{
+            @include flex(flex-start, flex-start);
+            margin-bottom: 110px;
+        }
+        .video-part{ // Parent element with class 'flex-part'
+            padding: 0;
+            margin-right: 120px;
+            width: 780px;
+
+            .video-info{
+                p{                    
+                    margin-bottom: 40px;
+                }
+            }
+            .video-player{
+                max-width: 780px;
+                margin-bottom: 20px;
+            } 
+            .play-list{                
+                >div{
+                    @include flex(flex-start, flex-start);
+                    
+                    .play-list-item{
+                        margin: 0 16px;
+                        width: 228px;
+                    }
+                }
+                img{
+                    width: 228px;
+                    height: 128px;
+                }
+            }
+        }
+        .side-chart{
+            display: block;
+            width: 300px;            
+            min-height: 900px;
+            background: #fff;
+
+            >div{
+                margin-bottom: 20px;
+            }
+        }
+        .ticks-bar{
+            padding: 80px 0;
+            justify-content: space-between;
+    
+            .tick-item{
+                width: 220px;
+                padding: 0;
+            }
+        }
+        .why-trade{
+            padding: 140px 0 160px;    
+            
+            >p{                
+                max-width: 880px;
+            }
+            .why-trade-items{
+                padding: 37px 0;
+    
+                .why-trade-item{
+                    width: 300px;
+                }
+            }
+            .why-trade-btn{
+                @include flex(space-between, center);
+                width: 500px;
+                margin: auto;
+            }
+            .why-trade-btn1, .why-trade-btn2{                      
+                height: 52px;
+                width: 240px;
+            }
+            .why-trade-btn1{                
+                margin-bottom: 0;
+                order: 2;
+            }            
+        }
+        footer{
+            >div{
+                padding: 80px 0;
+            }
+        }
+    }
+}
+
+// ============================
+// For side form
+.side-form{
+    color: #000;
+    max-width: 100px;
+}
