@@ -12,7 +12,7 @@ export const Section1 = () => {
 export const Section2 = () => {
     return (
         <div>
-            <h1>I am section 2</h1>
+            <h1>I am section 2 !</h1>
         </div>
     )
 }
