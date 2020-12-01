@@ -10,8 +10,51 @@
 4. 查找修改过的代码，在根目录package.json中：
 > lerna diff
 
+> 不是新概念，没有深入的研究，共同讨论。
+
+> monorepo的概念，就是把多个package放在一个repo里面管理的一种方式，说法比较抽象。
+
+> 举一个例子，开发全新的官网、全新的form、全新的fintech widget。
+
+> 最直观的，直接开发一个单体应用，放在一个repo中，像一个全家桶。
+
+> 好处：
+1. 易于把握项目整体内容。一次性把整个项目加载到本地，方便code review，方便开发人员把握整体的技术架构和业务目标。
+2. 易于集成和部署。所有的代码在一个仓库里面，不需要特别的集中管理和协调，也可以直接在本地部署调试。降低devops工作量。
+3. 所有的代码都在一个仓库中，易于重用，也方便重构。开发人员开发的时候比较容易发现和重用已有的代码。例如发送API这种服务可以在form和widget中同时使用。
+
+> 缺点显而易见：
+1. 代码维护性变差，随着功能以及代码量的大幅增加，所有代码功能耦合在一起。偷懒form直接加在页面中。
+2. 开发效率大幅降低，所有的开发人员在一个项目改代码。随着耦合增加，递交代码相互等待。目前代码都会有冲突，大项目冲突更多。
+3. 构建时间过长，任何小修改必须重新build整个项目，消耗的时间可观，也容易出错。devops工作量没有降低。
+4. 稳定性太差，随着耦合增加，任意一个功能出现问题，可以导致整个应用挂掉。
+
+> 目前的做法：multirepo，官网 + form + fintech，也是大多数公司的做法。
+
+> 这样子做：
+1. 每一个项目都有一个独立的仓库，职责单一。
+2. 代码量和复杂性受控，服务由不同的团队独立维护、权责边界清晰。
+3. 进一步的，利于进行权限控制，可以针对单个仓库来分配读写权限。对于fintech公司，银行等很重要。
+4. 单个服务也易于开发、测试、部署和扩展，一是不需要集中管理集中协调，二是项目规模可控，部署相对容易。本地可以npm link，部署后可以将相应的入口代码片段嵌入其他项目，做成npm包。
+
+> 不足：
+也会有项目间冗余代码多，项目代码不容易规范的问题。多个仓库，每个团队容易各自为政，随意引入依赖；每个团队在开发的时候走捷径，不断地重复造轮子而不是重用。
+
+> 将以上两者进行结合，同时发挥它们的优势，monorepo，一个仓库，多个项目。React、babel应该使用了monorepo管理代码。Google、facebook、twitter、atlassian、canva都在用monorepo管理源码，大型软件甚至是多个monorepo的组合。
+
+> 优点不说了，两者组合。缺点也是两者组合，比较明显的：
+
+1. monorepo基本放弃了对读权限的限制，开发人员可以接触到项目所有代码，19年4月Bilibili源代码泄露于github，带用户名密码，当天股票下跌4%。
+2. 代码量和复杂性不受控，随着业务规模变大，代码库会变得非常庞大、复杂。对于大型软件，无法拉下整个源码，只能在部分源码开发，再用内网穿透和反向代理等进行本地测试。
+
+> 为了适应monorepo的特点，就需要一下构建工具和管理工具，比如bazel(google)、buck(facebook)、lerna。lerna图标霸气。
 
 创建步骤：
+
+ctrl + shift + `: open terminal
+ctrl + shift + p:
+    default shell
+    settings
 
 > npm install lerna -g
 
@@ -19,11 +62,11 @@
 
 > lerna init，生成package.json和lerna.json，在package.json中private为true
 
-> 在packages文件夹中创建components和layout，分别npm init -y。
+> 在packages文件夹中创建components和layout，分别npm init -y。也可以用lerna create。
 
 > 运行所有package的某条命令，分别修改两个package的test命令为echo \"test layout\"，在顶层package.json的scripts中加入："test": "lerna run test"，并运行npm run test
 
-> 对某个package添加依赖的三种方法：lerna add axios --scope=components，lerna add babel-loader packages/layout -D，yarn workspace components add/remove react
+> 对某个package添加依赖的三种方法：lerna add classnames --scope=components，lerna add axios packages/layout，yarn workspace components add/remove react
 
 > 安装的依赖都在各自的node_modules中，希望放在顶层的node_modules中，所以修改顶层package.json和lerna.json：
   // package.json
@@ -38,14 +81,47 @@
 
 > lerna clean，删除两个package中的node_modules，然后直接yarn，可以安装所有的依赖到根目录。
 
-> 如果要安装一个依赖到所有的目录，lerna add react
+> 如果要安装一个依赖到所有的目录，lerna add react@16.14.0
 
 > (如果在layout中使用axios也是可以的，不过如果用typescript或其他type管理工具如flow，会报错。)
 
 > yarn workspace tim remove components，可以移除tim中的components依赖。
 
-> 也可以用lerna create
+> 目前官网项目中landing page比较适合使用monorepo，既避免在本地占用大量空间，也可以更方便的使用公用的组件和模板。
 
-> lerna version --conventional-commits
+> copy两个landing page项目，调整components和layout的react、react-dom版本，运行yarn
 
+> 进入两个landing page运行npm run start:en，看页面效果。它们共用一个react。
 
+> 在components中加入index.js，代码为：
+import React from 'react'
+
+export const Section1 = () => {
+    return (
+        <div>
+            <h1>This is Section 1</h1>
+        </div>
+    )
+}
+
+export const Section2 = () => {
+    return (
+        <div>
+            <h1>I am section 2</h1>
+        </div>
+    )
+}
+
+> 按照命名规则，更改components的package.json中的name为@landingpage/common
+
+> lerna add components --scope=tim，在其中的一个landing page引入Section1和Section2，看页面效果。
+
+> 更改Section1和Section2，在landing page中看页面效果。
+
+> 进行commit，然后lerna version --conventional-commits，进行版本升级。
+
+> 修改顶层的lerna.json，"version": "independent"，从fixed模式切换到independent模式。
+
+> 修改components中的index.js，然后commit，然后再次lerna version，进行版本升级，只有components和使用了它的包会进行升级。
+
+> 推到远端repo后，可以根据不同package的版本变化来trigger不同的ci/cd流程，可以在不同的地方进行部署。
