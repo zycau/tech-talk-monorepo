@@ -8,29 +8,33 @@ module.exports =() => {
     const lang = process.env.REACT_APP_LANG
 	const output = process.env.OUTPUT
 	const website = process.env.REACT_APP_WEBSITE
-	const publicPath = output === 'test' ? 'http://lprsc.acytest.com/2020-07-share-cfds' : 'https://lprsc.acycms.com/2020-07-share-cfds'
-	
+
+	const [dirName] = __dirname.split(path.sep).slice(-1)
+	const publicPath = output === 'test' ? `http://lprsc.acytest.com/${dirName}` : `https://lprsc.acycms.com/${dirName}`
+	const dist = output === 'test' ? 'dist_test' : 'dist'
+	const templateFolder = output === 'test' ? 'testing' : 'live'
+
 	return {
 		entry: {
 			main: './index.js'
 		},
 		output: {
-			path: path.resolve(__dirname, `dist`, `${website}`, `${lang}`),
+			path: path.resolve(__dirname, `${dist}`, `${website}`, `${lang}`),
 			filename: '[name].[contentHash].bundle.js',
-			publicPath: `${publicPath}/dist/${website}/${lang}`
+			publicPath: `${publicPath}/${dist}/${website}/${lang}/`
 		},
 		mode: 'production',
-		devtool: 'inline-source-map',
+		// devtool: 'inline-source-map',
 	
 		plugins: [ 
-			new HtmlWebpackPlugin({ template: `./Templates/${website}/${lang}/index.html` }),
+			new HtmlWebpackPlugin({ template: `./Templates/${templateFolder}/${website}/${lang}/index.html` }),
 			new webpack.DefinePlugin({
 				'process.env.REACT_APP_LANG': JSON.stringify(process.env.REACT_APP_LANG),
                 'process.env.OUTPUT': JSON.stringify(process.env.OUTPUT),
                 'process.env.REACT_APP_WEBSITE': JSON.stringify(process.env.REACT_APP_WEBSITE),
             }),
 			new CleanWebpackPlugin(),
-			new BundleAnalyzerPlugin()
+			// new BundleAnalyzerPlugin()
 		],
 		devServer: {
 			contentBase: path.join(__dirname, `${output}`),
@@ -42,14 +46,24 @@ module.exports =() => {
 		},
 		module: {
 			rules: [
+				// {
+				// 	test: /\.(png|jpg|gif|pdf|ico)$/i,
+				// 	use: [
+				// 		{
+				// 			loader: 'url-loader'
+				// 		}
+				// 	]
+				// },
 				{
-					test: /\.(png|jpg|gif|pdf|ico)$/i,
-					use: [
-						{
-							loader: 'url-loader'
-						}
-					]
-				},
+                    test: /\.(svg|png|jpg|gif|ico)$/,
+                    use: {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]", 
+							outputPath: "../../assets/"
+                        }
+                    }
+                },
 				{
 					test: /\.scss$/,
 					use: [
