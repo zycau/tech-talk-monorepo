@@ -1,65 +1,26 @@
 0 silly argv {
-0 silly argv   _: [ 'version' ],
+0 silly argv   _: [ 'clean' ],
 0 silly argv   lernaVersion: '3.22.1',
-0 silly argv   '$0': 'C:\\Users\\Yucheng\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js'
+0 silly argv   '$0': 'C:\\Users\\Sales\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js'
 0 silly argv }
 1 notice cli v3.22.1
-2 verbose rootPath C:\work\tech-talk-monorepo
+2 verbose rootPath C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo
 3 info versioning independent
-4 silly isAnythingCommitted
-5 verbose isAnythingCommitted 1
-6 silly currentBranch
-7 verbose currentBranch master
-8 silly remoteBranchExists
-9 silly isBehindUpstream
-10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 1
-11 silly hasTags
-12 verbose hasTags true
-13 silly git-describe.sync "components@0.0.4-1-gc918255" => {"lastTagName":"components@0.0.4","lastVersion":"0.0.4","refCount":"1","sha":"c918255","isDirty":false}
-14 info Looking for changed packages since components@0.0.4
-15 silly checking diff packages/components
-16 silly found diff in packages/components/index.js
-17 verbose filtered diff [ 'packages/components/index.js' ]
-18 silly checking diff packages/layout
-19 silly no diff found in layout
-20 silly checking diff packages/page2
-21 silly no diff found in @landingpage/common
-22 silly checking diff packages/page
-23 silly no diff found in tim
-24 verbose updated components
-25 verbose updated tim
-26 verbose git-describe undefined => "components@0.0.4-1-gc918255"
-27 silly git-describe parsed => {"lastTagName":"components@0.0.4","lastVersion":"0.0.4","refCount":"1","sha":"c918255","isDirty":false}
-28 info execute Skipping releases
-29 silly lifecycle No script for "preversion" in "root", continuing
-30 silly lifecycle No script for "preversion" in "components", continuing
-31 silly lifecycle No script for "version" in "components", continuing
-32 silly lifecycle No script for "preversion" in "tim", continuing
-33 silly lifecycle No script for "version" in "tim", continuing
-34 silly lifecycle No script for "version" in "root", continuing
-35 silly gitAdd [
-35 silly gitAdd   'packages/components/package.json',
-35 silly gitAdd   'packages/components/package-lock.json',
-35 silly gitAdd   'packages/page/package.json',
-35 silly gitAdd   'packages/page/package-lock.json'
-35 silly gitAdd ]
-36 silly gitCommit Publish
-36 silly gitCommit
-36 silly gitCommit  - components@0.0.5
-36 silly gitCommit  - tim@0.0.3
-37 verbose git [
-37 verbose git   'commit',
-37 verbose git   '-F',
-37 verbose git   'C:\\Users\\Yucheng\\AppData\\Local\\Temp\\bc715116-4453-47b6-82c7-8a0d9471d8b5\\lerna-commit.txt'
-37 verbose git ]
-38 silly gitTag components@0.0.5
-39 verbose git [ 'tag', 'components@0.0.5', '-m', 'components@0.0.5' ]
-40 silly gitTag tim@0.0.3
-41 verbose git [ 'tag', 'tim@0.0.3', '-m', 'tim@0.0.3' ]
-42 error Error: Command failed: git tag tim@0.0.3 -m tim@0.0.3
-42 error fatal: tag 'tim@0.0.3' already exists
-42 error
-42 error     at makeError (C:\work\tech-talk-monorepo\node_modules\execa\index.js:174:9)
-42 error     at C:\work\tech-talk-monorepo\node_modules\execa\index.js:278:16
-42 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
-42 error     at async Promise.all (index 1)
+4 info Removing the following directories:
+5 info clean packages\components\node_modules
+5 info clean packages\layout\node_modules
+5 info clean packages\page2\node_modules
+5 info clean packages\page\node_modules
+6 info clean removing C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\components\node_modules
+7 silly rimrafDir C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\components\node_modules
+8 info clean removing C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\layout\node_modules
+9 silly rimrafDir C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\layout\node_modules
+10 info clean removing C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\page2\node_modules
+11 silly rimrafDir C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\page2\node_modules
+12 info clean removing C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\page\node_modules
+13 silly rimrafDir C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\page\node_modules
+14 verbose rimrafDir removed C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\page2\node_modules
+15 verbose rimrafDir removed C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\components\node_modules
+16 error Error: Command failed: C:\Program Files\nodejs\node.exe C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\node_modules\rimraf\bin.js --no-glob C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\packages\page\node_modules\
+16 error     at makeError (C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\node_modules\execa\index.js:174:9)
+16 error     at C:\Users\Sales\Desktop\tech-talk\tech-talk-monorepo\node_modules\execa\index.js:278:16

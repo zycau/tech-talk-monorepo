@@ -13,7 +13,6 @@
     "babel-loader": "^8.1.0"
   },
   "dependencies": {
-    "@landingpage/common": "^0.0.3",
     "babel": "^6.23.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5"

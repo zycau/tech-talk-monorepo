@@ -1,5 +1,5 @@
 {
-  "name": "@landingpage/common",
+  "name": "landingpage",
   "version": "0.0.3",
   "main": "./src/index.js",
   "dependencies": {
@@ -9,6 +9,7 @@
     "antd": "^4.0.4",
     "axios": "^0.19.2",
     "babel": "^6.23.0",
+    "components": "^0.0.7",
     "countries-list": "^2.5.4",
     "i18next": "^19.4.0",
     "moment-timezone": "^0.5.28",

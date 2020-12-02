@@ -8,6 +8,7 @@ import './vendor/acy-chart.f97b6b70.css'
 import banner from './assets/banner.png'
 import smallLogo from './assets/small-logo.png'
 import {Text} from './Text'
+import {Section1, Section2} from 'components'
 
 export const App = () => {
     const lang = 'en'
@@ -72,6 +73,7 @@ export const App = () => {
             <div className='banner'>
                 <img src={banner} />
                 <div>
+                    <Section1 />
                     <div className='header'>
                         <a href='https://www.acy.com' target='_blank'>
                             <img src={smallLogo} className='logo'/>
@@ -82,6 +84,7 @@ export const App = () => {
                         <div ref={typeformRef} style={{ height: '100%', width: '100%'}}></div>
                     </div>
                 </div>
+                <Section2 />
             </div>
             <div className='belt'>
                 <div>                    
