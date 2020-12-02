@@ -64,11 +64,11 @@ ctrl + shift + p:
 
 > lerna init，生成package.json和lerna.json，在package.json中private为true
 
-> 在packages文件夹中创建components和layout，分别npm init -y。也可以用lerna create。
+> 在packages文件夹中创建components和service，分别npm init -y。(也可以用lerna create。)
 
-> 运行所有package的某条命令，分别修改两个package的test命令为echo \"test layout\"，在顶层package.json的scripts中加入："test": "lerna run test"，并运行npm run test
+> 运行所有package的某条命令，分别修改两个package的test命令为echo \"test layout\"，并运行npm run test
 
-> 对某个package添加依赖的三种方法：lerna add classnames --scope=components，lerna add axios packages/layout，yarn workspace components add/remove react
+> 对某个package添加依赖的三种方法：lerna add classnames --scope=components，lerna add axios packages/layout，(yarn workspace components add/remove react)
 
 > 安装的依赖都在各自的node_modules中，希望放在顶层的node_modules中，所以修改顶层package.json和lerna.json：
   // package.json
@@ -83,44 +83,30 @@ ctrl + shift + p:
 
 > lerna clean，删除两个package中的node_modules，然后直接yarn，可以安装所有的依赖到根目录。
 
-> 如果要安装一个依赖到所有的目录，lerna add react@16.14.0
+> 添加.gitignore，（如果还是数千的change，commit，reload window）
+node_modules
+
+> 如果要安装一个依赖到所有的目录，lerna add react@16.14.0, lerna add react-dom@16.14.0
 
 > (如果在layout中使用axios也是可以的，不过如果用typescript或其他type管理工具如flow，会报错。)
 
-> yarn workspace tim remove components，可以移除tim中的components依赖。
+> （yarn workspace components remove classnames，可以移除components中的classnames依赖。）
 
-> 目前官网项目中landing page比较适合使用monorepo，既避免在本地占用大量空间，也可以更方便的使用公用的组件和模板。
+> 目前官网项目中landing page比较适合使用monorepo，类似非workspace的monorepo，既避免在本地占用大量空间，也可以更方便的使用公用的组件和模板。
 
 > copy两个landing page项目，调整components和layout的react、react-dom版本，运行yarn
 
 > 进入两个landing page运行npm run start:en，看页面效果。它们共用一个react。
 
-> 在components中加入index.js，代码为：
-import React from 'react'
-
-export const Section1 = () => {
-    return (
-        <div>
-            <h1>This is Section 1</h1>
-        </div>
-    )
-}
-
-export const Section2 = () => {
-    return (
-        <div>
-            <h1>I am section 2</h1>
-        </div>
-    )
-}
+> landingpage中引入公共组件，在components中加入index.js，代码为：看code
 
 > 按照命名规则，更改components的package.json中的name为@landingpage/common
 
-> lerna add components --scope=tim，在其中的一个landing page引入Section1和Section2，看页面效果。
+> lerna add @landingpage/common --scope=page1，在其中的一个landing page引入Section1和Section2，看页面效果。
 
-> 更改Section1和Section2，在landing page中看页面效果。
+> 更改Section1的style，在landing page中看页面效果。
 
-> 进行commit，然后lerna version --conventional-commits，进行版本升级。
+> 进行commit，然后lerna version --conventional-commits，进行版本升级。进入各个包看版本变化。
 
 > 修改顶层的lerna.json，"version": "independent"，从fixed模式切换到independent模式。
 
